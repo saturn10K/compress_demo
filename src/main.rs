@@ -20,11 +20,11 @@ fn main() {
     let output = File::create(args().nth(2).unwrap()).unwrap();
     //compressing>>>
     let mut encoder = GzEncoder::new(output, Compression::default());
-
+    //instant wehn processes started
     let start = Instant::now();
-
+    //time btw start and end of operations
     let duration = start.duration_since(start);
-
+    //data copy frm input to encoder
     copy(&mut input, &mut encoder).unwrap();
     let output = encoder.finish().unwrap();
     println!(
